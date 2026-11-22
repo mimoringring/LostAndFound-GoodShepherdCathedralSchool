@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Student Lost and Found Portal">
+  <title>Lost & Found | Student Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="Lost and Found home">
+        <span class="brand-mark" aria-hidden="true">lol</span>
+        <span class="brand-copy">
+          <strong>lost<span>&</span>found eyy</strong>
+          <small>GOOD SHEPHERD CATHEDRAL SCHOOL</small>         
+        </span>
+      </a>
+      <div class="portal-label"><span class="status-dot"></span> STUDENT PORTAL</div>
+    </header>
+
+    <main>
+      <section class="intro">
+        <p class="intro-copy">Browse items that have been turned in to the school's Lost and Found.</p>
+      </section>
+
+      <section class="browse-panel" aria-label="Browse found items">
+        <div class="search-wrap">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 5 5"></path></svg>
+          <input id="searchInput" type="search" placeholder="Search for an item..." autocomplete="off" aria-label="Search for an item">
+        </div>
+
+        <div class="browse-toolbar">
+          <div class="tabs" role="tablist" aria-label="Item categories">
+            <button class="tab active" id="homeTab" role="tab" aria-selected="true" data-tab="home">Home <span id="homeCount">6</span></button>
+            <button class="tab" id="archivedTab" role="tab" aria-selected="false" data-tab="archived">Archived <span id="archivedCount">2</span></button>
+          </div>
+          <p class="results-label" id="resultsLabel">Recently surrendered</p>
+        </div>
+
+        <div class="item-gallery" id="itemGallery" aria-live="polite">
+          <!-- Item cards are rendered by js/script.js -->
+        </div>
+        <div class="empty-state" id="emptyState" hidden>
+          <span class="empty-icon">⌕</span>
+          <h3>No items found</h3>
+          <p>Try another keyword or check the other tab.</p>
+        </div>
+      </section>
+
+      <footer class="site-footer">
+        <span>Can't find your item?</span>
+        <span>Visit the school's designated Lost and Found office.</span>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Item details modal -->
+  <div class="modal-backdrop" id="itemModal" aria-hidden="true">
+    <section class="item-modal" role="dialog" aria-modal="true" aria-labelledby="modalItemName">
+      <button class="modal-close" id="closeModal" aria-label="Close item details">×</button>
+      <div class="modal-image-column">
+        <div class="modal-image-frame">
+          <img id="modalImage" src="" alt="">
+          <span class="image-note">ITEM PHOTOGRAPH</span>
+        </div>
+        <div class="modal-image-caption">
+          <span class="caption-label">ITEM</span>
+          <h2 id="modalItemName"></h2>
+          <p id="modalBrand"></p>
+        </div>
+      </div>
+      <div class="modal-content">
+        <p class="eyebrow">LOST & FOUND RECORD</p>
+        <h2 class="details-heading">Item details</h2>
+        <div class="detail-list">
+          <div class="detail-row">
+            <span class="detail-icon">▦</span>
+            <div><small>Date surrendered</small><strong id="modalDate"></strong></div>
+          </div>
+          <div class="detail-row">
+            <span class="detail-icon">⚲</span>
+            <div><small>Location found</small><strong id="modalLocation"></strong></div>
+          </div>
+          <div class="detail-row">
+            <div>
+              <small>Status</small>
+              <strong id="modalStatus">Available</strong>
+            </div>
+          </div>
+        </div>
+        <div class="description-block">
+          <small>DESCRIPTION</small>
+          <p id="modalDescription"></p>
+        </div>
+        <div class="modal-actions">
+          <button class="claim-button" id="claimButton">Request to claim <span>↗</span></button>
+          <p class="claim-note">A school administrator will verify ownership before an item is released.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="js/script.js"></script>
+</body>
+</html>
